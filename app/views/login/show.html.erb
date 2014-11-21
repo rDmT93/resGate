@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Freelancer - Start Bootstrap Theme</title>
+
+</head>
+
+<body id="page-top" class="index">
+
+<!-- Header -->
+<header id="hp_header">
+  <div class="container">
+       <%= link_to(image_tag('rg_logo_indexpage.png', alt: 'Home', class: 'center-block'),
+                   root_path, class: 'img-responsive', id: 'hp_logo', target: '_self') %>
+  </div>
+</header>
+
+<!-- Body -->
+<section class="text-center" id="body_style">
+
+  <div class="container">
+
+     <h1 id="hp_main_frase" style=" opacity: 1;">For Scientists.</h1>
+     <h3 id="hp_sub_frase" style="opacity: 1;">Access scientific knowledge, and make your research visible.</h3>
+
+    <div class="col-lg-12">
+
+      <% if @logged_in %>
+          <p id="hp_sub_frase"> Welcome <%= @c_user.name %> <p>
+      <%= link_to 'Logout', logout_path %>
+      <% else %>
+
+     <%= link_to(image_tag('facebook_login.png', alt: 'Home', size: "350x60", class: 'center-block'),
+                 '/auth/facebook', class: 'img-responsive', id: 'hp_logo', target: '_self') %>
+
+      <% end %>
+
+    </div>
+   </div>
+
+</section>
+
+<!-- Footer -->
+<footer class="text-center">
+
+
+  <div class="footer-above">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col col-md-4">
+          <h3>Research visibility</h3>
+          <p>Add your publications, access millions<br> more,
+            and make your research visible.</p>
+        </div>
+        <div class="footer-col col-md-4">
+          <h3>Connect and collaborate</h3>
+          <p>Connect and collaborate
+            Connect with colleagues, <br> peers,
+            co-authors, and specialists in your field.</p>
+        </div>
+        <div class="footer-col col-md-4">
+          <h3>Stats and metrics</h3>
+          <p>Get stats about views, downloads, <br>
+            and citations of your research.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="footer-below">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          &copy; 2014 researchgate.net. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
