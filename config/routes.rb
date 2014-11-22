@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'home/show'
+
   match "auth/:provider/callback" => "sessions#create", via: [:get, :post]
   match "logout" => "sessions#destroy", :as => :logout, via: [:get]
 

@@ -39,3 +39,4 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'omniauth-facebook', '~> 1.4.1'
+gem 'font-awesome-rails'

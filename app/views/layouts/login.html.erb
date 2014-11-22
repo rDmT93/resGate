@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>ResearchGate</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= favicon_link_tag 'rsg_favicon.ico' %>
+</head>
+
+<body id="page-top" class="index">
+
+<!-- Header -->
+<header id="hp_header">
+  <div class="container">
+    <%= link_to(image_tag('rg_logo_indexpage.png', alt: 'ResearchGate', class: 'center-block'),
+                root_path, class: 'img-responsive', id: 'hp_logo', target: '_self') %>
+  </div>
+</header>
+
+<!-- Body -->
+<section class="text-center" id="body_style">
+
+  <div class="container">
+
+    <h1 id="hp_main_frase" style=" opacity: 1;">For Scientists.</h1>
+    <h3 id="hp_sub_frase" style="opacity: 1;">Access scientific knowledge, and make your research visible.</h3>
+
+    <div class="col-lg-12">
+
+      <%= link_to(image_tag('facebook_login.png', alt: 'Facebook login', size: "350x55", class: 'center-block'),
+                  '/auth/facebook', class: 'img-responsive', id: 'hp_logo', target: '_self') %>
+
+    </div>
+  </div>
+
+  <br>
+
+</section>
+
+<!-- Footer -->
+<footer class="text-center">
+
+
+  <div class="footer-above">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col col-md-4">
+          <h3>Research visibility</h3>
+          <p>Add your publications, access millions<br> more,
+            and make your research visible.</p>
+        </div>
+        <div class="footer-col col-md-4">
+          <h3>Connect and collaborate</h3>
+          <p>Connect and collaborate
+            Connect with colleagues, <br> peers,
+            co-authors, and specialists in your field.</p>
+        </div>
+        <div class="footer-col col-md-4">
+          <h3>Stats and metrics</h3>
+          <p>Get stats about views, downloads, <br>
+            and citations of your research.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="footer-below">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          &copy; 2014 researchgate.net. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
