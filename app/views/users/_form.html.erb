@@ -1,0 +1,73 @@
+<%= form_for(@user, multipart: true) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <% if params[:f] == 'settings'%>
+
+      <div class="field">
+         <label>Name: </label> <br>
+         <%= f.text_field :name, :class => "form-control user_form" %>
+      </div>
+
+      <br>
+
+      <div class="field">
+         <label>Gender: </label> <br>
+         <%= f.select :gender,  User::GENDER_TYPES %>
+      </div>
+
+      <br>
+
+      <div class="field">
+         <label>Photo: </label>
+         <%= image_tag @user.avatar.url(:thumb), class: 'img-responsive' %>
+         <br>
+         <%= f.file_field :avatar %>
+      </div>
+
+   <% else %>
+
+       <div class="field">
+         <label>Degree: </label> <br>
+         <%= f.text_field :degree, :class => "form-control user_form" %>
+       </div>
+
+       <br>
+
+       <div class="field">
+         <label> Position: </label> <br>
+         <%= f.text_field :position, :class => "form-control user_form" %>
+       </div>
+
+       <br>
+
+       <div class="field">
+         <label>Institution: </label> <br>
+         <%= f.text_field :institution, :class => "form-control user_form" %>
+       </div>
+
+       <br>
+
+       <div class="field">
+         <label>Deparment: </label> <br>
+         <%= f.text_field :department, :class => "form-control user_form" %>
+       </div>
+
+  <%end%>
+
+  <br>
+  <br>
+
+  <div class="actions">
+      <%= f.submit "Save"%>
+  </div>
+<% end %>

@@ -1,0 +1,28 @@
+<% content_for :content do %>
+<!-- Page Heading -->
+<div class="row">
+  <div class="col-lg-12">
+    <h2 class="page-header">
+
+      <p id="notice"><%= notice %></p>
+
+      Researcher
+
+      <% if params[:f] == 'settings'%>
+           <small>Edit Settings</small>
+      <% else %>
+          <small>Edit Profile</small>
+      <% end %>
+    </h2>
+  </div>
+</div>
+
+<%= render 'form' %>
+
+<br>
+<br>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>
+
+<% end %>

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121011256) do
+ActiveRecord::Schema.define(version: 20141124191209) do
+
+  create_table "followers", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "fw_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "followers", ["fw_id"], name: "index_followers_on_fw_id"
+  add_index "followers", ["user_id"], name: "index_followers_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "provider"
@@ -22,6 +32,15 @@ ActiveRecord::Schema.define(version: 20141121011256) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "gender"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "degree"
+    t.string   "position"
+    t.string   "institution"
+    t.string   "department"
   end
 
 end

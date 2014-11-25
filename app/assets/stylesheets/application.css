@@ -22,3 +22,7 @@
 .top-nav>li>a {
     color: #CAC4C4;
 }
+
+.navbar-brand{
+   padding-left: 150px;
+}

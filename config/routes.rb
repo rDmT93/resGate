@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
 
+  get 'follower/index'
+
   get 'home/show'
 
   match "auth/:provider/callback" => "sessions#create", via: [:get, :post]
   match "logout" => "sessions#destroy", :as => :logout, via: [:get]
 
+  get "follow" => "users#follow", :as => "follow"
+  get "unfollow" => "users#unfollow", :as => "unfollow"
+
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
+  resources :users
 
   root to: "login#show"
   # The priority is based upon order of creation: first created -> highest priority.

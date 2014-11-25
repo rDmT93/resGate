@@ -1,0 +1,196 @@
+<% content_for :content do %>
+
+    <script>
+
+        $(document).ready(function(){
+
+            $(".fw").click(function()
+            {
+                 var id = $(this).attr("id");
+                 var action = $(this).attr("name");
+
+                 if(action == "f"){
+
+                    $.get('/follow', {f_user_id: id},
+                    function(data,status){   });
+
+                    $(this).attr("name", "u");
+                    $(this).text("Unfollow")
+
+                    $(this).removeClass("btn-success");
+                    $(this).addClass("btn-default");
+
+                 }
+
+                 else {
+
+
+                     $.get('/unfollow', {f_user_id: id},
+                     function(data,status){   });
+
+                     $(this).attr("name", "f");
+                     $(this).text("Follow")
+
+                     $(this).removeClass("btn-default");
+                     $(this).addClass("btn-success");
+
+                 }
+
+
+                return false;
+            });
+
+        });
+
+
+    </script>
+
+
+
+<!-- Page Heading -->
+<div class="row">
+  <div class="col-lg-12">
+    <h2 class="page-header">
+
+      <p id="notice"><%= notice %></p>
+
+      Researcher <small>Profile</small>
+    </h2>
+  </div>
+</div>
+
+<div>
+  <div class=" col-md-12">
+    <div class="">
+      <div class="row">
+        <div class="col-md-3">
+          <% if @user.avatar.size.nil? %>
+             <%= image_tag('missing.png', alt: 'profile_photo', size: '150x150') %>
+           <% else %>
+             <%= image_tag @user.avatar.url(:profile), class: 'img-responsive' %>
+           <% end %>
+        </div>
+        <div class="col-md-8">
+
+          <div id="p_name">
+
+            <% if @user.gender == "Male" %>
+                <i class="fa fa-male"></i>
+            <% else %>
+                <% if @user.gender == "Female" %>
+                    <i class="fa fa-female"></i>
+                <% end %>
+            <% end %>
+
+            <%= @user.name %>
+
+          </div>
+
+          <small><cite title="San Francisco, USA"><%= @user.degree %> </cite></small>
+          </br> </br>
+          <p>
+            <%= @user.position%>
+            </br>
+            <%= @user.institution %> . <%= @user.department %> 
+
+          </p>
+          <% if @user.id == session[:user_id] %>
+              <%= link_to edit_user_path(@user, f: 'profile') do %>
+                 <i class="fa fa-fw fa-edit"></i>
+              <% end %>
+          <% end %>
+
+
+
+             <div id="followb">
+
+                <a href="" id="<%= @user.id %>" name="<%= name(@is_follow) %>"
+                  class="fw btn <%= button_class(@is_follow ) %>"> <%= button_text(@is_follow ) %></a>
+
+             </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+
+    <div class="col-md-8">
+
+      rferf
+      eferf
+      erf
+      erfr
+      efer
+      f
+      erf
+    </div>
+
+
+    <div class="col-md-4">
+
+      <div id="fandf">
+
+          <div class="well well-sm follow">
+
+             <div> <b><%= @following.size%> FOLLOWING</b>
+            <%= link_to 'View All', follower_index_path(:user_id => @user.id, :t => 'Following'), :class => 'va' %></div>
+
+              <% @following.each { |f| %>
+                 <%= link_to(image_tag(f.avatar.url(:thumb), class: 'img-responsive f_img'), user_path(f)) %>
+              <% } %>
+
+          </div>
+
+          <div class="well well-sm follow">
+
+            <div> <b><%= @followers.size%> FOLLOWERS</b>
+            <%= link_to 'View All', follower_index_path(:user_id => @user.id, :t => 'Followers'), :class => 'va' %></div>
+
+             <% @followers.each { |f| %>
+                <%= link_to(image_tag(f.avatar.url(:thumb), class: 'img-responsive f_img'), user_path(f)) %>
+             <% } %>
+
+          </div>
+
+      </div>
+
+    </div>
+
+    </div>
+
+
+
+
+
+
+
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+  </div>
+</div>
+
+<% link_to 'Edit', edit_user_path(@user) %>
+<% link_to 'Back', users_path %>
+
+<% end %>

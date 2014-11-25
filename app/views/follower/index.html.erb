@@ -1,0 +1,39 @@
+<% content_for :content do %>
+
+    <!-- Page Heading -->
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="page-header">
+
+          <p id="notice"><%= notice %></p>
+
+          Researcher <small><%=params[:t]%> [<%= @following.size%>]</small>
+        </h2>
+      </div>
+    </div>
+
+    <% if  params[:t] == 'Following' %>
+
+       <div class="well well-sm">
+
+           <% @following.each { |f| %>
+             <%= link_to(image_tag(f.avatar.url(:thumb), class: 'img-responsive f_img'), user_path(f)) %>
+           <% } %>
+
+       </div>
+
+    <% else %>
+
+        <div class="well well-sm">
+
+            <% @followers.each { |f| %>
+              <%= link_to(image_tag(f.avatar.url(:thumb), class: 'img-responsive f_img'), user_path(f)) %>
+            <% } %>
+
+        </div>
+
+    <% end %>
+
+    <%= link_to 'Back', user_path(@user) %>
+
+<% end %>

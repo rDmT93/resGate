@@ -25,7 +25,6 @@ class SessionsController < ApplicationController
 
       if user.save
         session[:user_id] = user.id
-        notice = "Signed in!"
         logger.debug "URL to redirect to: #{url}"
         redirect_to url, :notice => notice
       else
@@ -36,6 +35,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, :notice => "Logged out!"
+    redirect_to root_url
   end
 end
