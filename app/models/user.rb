@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   has_many :inverse_followers, :class_name => 'Follower', :foreign_key => "fw_id"
   has_many :inverse_fws, :through => :inverse_followers, :source => :user
 
+  has_many :messages, :dependent => :destroy
 
   def user_params
     params.require(:user).permit(:name, :email, :provider, :uid, :oauth_token, :oauth_expires_at,

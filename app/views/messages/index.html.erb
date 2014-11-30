@@ -1,0 +1,52 @@
+<% content_for :content do %>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="page-header">
+
+          <p id="notice"><%= notice %></p>
+
+           Researcher <small> Inbox </small>
+        </h2>
+
+      </div>
+
+    </div>
+
+    <% @messages.each { |m| %>
+        <% @s = User.find(m.sender_id) %>
+        <div id="info_m_h" class="well well-sm">
+
+          <%= link_to(image_tag(@s.avatar.url(:thumb)), user_path(@s)) %>
+
+          <div id="info_m">
+
+            <p id="m_date" class="small text-muted"><i class="fa fa-clock-o"></i> <%= m.created_at %></p>
+
+            <p class="small"> by <%= @s.name %> </p>
+
+          </div>
+
+          <br>
+          <br>
+
+          <div>
+            <%= link_to m.subject, message_url(m) %>
+          </div>
+
+          <%= m.message[0..100]+"..." %>
+
+        </div>
+    <% } %>
+
+    <%= link_to 'Back to Profile', user_url(@c_user) %>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+<% end %>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'home/show'
 
+  post 'messages/new'
+
   match "auth/:provider/callback" => "sessions#create", via: [:get, :post]
   match "logout" => "sessions#destroy", :as => :logout, via: [:get]
 
@@ -13,6 +15,10 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resource :home, only: [:show]
   resources :users
+
+  resources :messages
+
+
 
   root to: "login#show"
   # The priority is based upon order of creation: first created -> highest priority.

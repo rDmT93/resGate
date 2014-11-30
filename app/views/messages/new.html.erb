@@ -1,0 +1,10 @@
+<% content_for :content do %>
+    <h3>Send Message</h3> <br>
+
+    <%= render 'form' %>
+
+    <br>
+
+    <% @u = User.find(params[:user_id]) %>
+    <%= link_to 'Back', user_url(@u) %>
+<% end %>

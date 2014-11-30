@@ -1,0 +1,36 @@
+<%= form_for(@message) do |f| %>
+    <% if @message.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@message.errors.count, "Error") %> Message not sent:</h2>
+
+          <ul>
+            <% @message.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <label>Subject:</label>
+      <%= f.text_field :subject, :class => "form-control" %>
+    </div>
+
+    <div class="field">
+      <label>Message:</label>
+      <%= f.text_area :message, :class => "form-control", :rows => "12" %>
+    </div>
+
+    <%= f.hidden_field :read, :value => false %>
+
+    <%= f.hidden_field :user_id, :value => params[:user_id] %>
+
+    <%= f.hidden_field :sender_id, :value => session[:user_id] %>
+
+    <br>
+    <br>
+
+    <div class="actions">
+      <%= f.submit "Send"%>
+    </div>
+<% end %>

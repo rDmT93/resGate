@@ -70,7 +70,7 @@
              <%= image_tag @user.avatar.url(:profile), class: 'img-responsive' %>
            <% end %>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
 
           <div id="p_name">
 
@@ -86,12 +86,12 @@
 
           </div>
 
-          <small><cite title="San Francisco, USA"><%= @user.degree %> </cite></small>
+          <small><%= @user.degree %> </small>
           </br> </br>
           <p>
             <%= @user.position%>
             </br>
-            <%= @user.institution %> . <%= @user.department %> 
+            <%= @user.institution %> . <%= @user.department %>
 
           </p>
           <% if @user.id == session[:user_id] %>
@@ -100,15 +100,21 @@
               <% end %>
           <% end %>
 
+        </div>
 
+        <div class="col-md-3">
 
-             <div id="followb">
+        <div id="smAndf">
 
-                <a href="" id="<%= @user.id %>" name="<%= name(@is_follow) %>"
-                  class="fw btn <%= button_class(@is_follow ) %>"> <%= button_text(@is_follow ) %></a>
+          <%= button_to "Send Message", new_message_path(:user_id => @user.id),
+                        :class => "btn btn-success" %>
 
-             </div>
+          <br>
 
+          <a href="" id="<%= @user.id %>" name="<%= name(@is_follow) %>"
+             class="fw btn <%= button_class(@is_follow ) %>"> <%= button_text(@is_follow ) %></a>
+
+        </div>
 
         </div>
 

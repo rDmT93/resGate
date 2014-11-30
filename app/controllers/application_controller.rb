@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   def current_user
     if user_signed_in?
       @c_user = User.find(session[:user_id])
+      @m = @c_user.messages.where(:read => false).order("created_at desc")
     end
   end
+
 end
