@@ -26,3 +26,12 @@
 .navbar-brand{
    padding-left: 150px;
 }
+
+.new {
+   color: rgba(104, 241, 21, 0.65);
+}
+
+#no_m {
+   font-size: 11px;
+   padding: 5px;
+}

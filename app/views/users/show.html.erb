@@ -104,17 +104,21 @@
 
         <div class="col-md-3">
 
-        <div id="smAndf">
+        <% if @user.id != session[:user_id] %>
 
-          <%= button_to "Send Message", new_message_path(:user_id => @user.id),
-                        :class => "btn btn-success" %>
+            <div id="smAndf">
 
-          <br>
+               <%= button_to "Send Message", new_message_path(:user_id => @user.id),
+                             :class => "btn btn-success" %>
 
-          <a href="" id="<%= @user.id %>" name="<%= name(@is_follow) %>"
-             class="fw btn <%= button_class(@is_follow ) %>"> <%= button_text(@is_follow ) %></a>
+               <br>
 
-        </div>
+              <a href="" id="<%= @user.id %>" name="<%= name(@is_follow) %>"
+                  class="fw btn <%= button_class(@is_follow ) %>"> <%= button_text(@is_follow ) %></a>
+
+            </div>
+
+        <% end %>
 
         </div>
 

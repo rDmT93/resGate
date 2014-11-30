@@ -30,7 +30,13 @@
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+
+        <% if @m.size == 0 %>
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+        <% else %>
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope new"></i> <b class="caret"></b></a>
+        <% end %>
+
         <ul class="dropdown-menu message-dropdown">
 
           <% @m.each { |m| %>
@@ -52,10 +58,15 @@
               </li>
           <% } %>
 
-
-          <li class="message-footer">
-            <a href="#">Read All New Messages</a>
-          </li>
+          <% if @m.size == 0 %>
+              <li id="no_m">
+               There aren't new messages.
+              </li>
+          <% else %>
+              <li class="message-footer">
+                <a href=<%= messages_url %> >View All Messages </a>
+              </li>
+          <% end %>
         </ul>
       </li>
       <li class="dropdown">

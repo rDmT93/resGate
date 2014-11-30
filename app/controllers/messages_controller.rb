@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
     if @message.user_id != session[:user_id]
       render :forbidden
     else
+      Message.find(@message.id).update(:read => true)
       render :show
     end
 

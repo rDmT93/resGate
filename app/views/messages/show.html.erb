@@ -37,6 +37,12 @@
     </div>
 
 
+    <%= button_to "Reply", new_message_path(:user_id => @message.sender_id, :r_msg_id => @message.id),
+                  :class => "btn btn-success" %>
+
+    <br>
+    <br>
+
     <%= link_to 'Back to Inbox', messages_url %>
 
     <br>
