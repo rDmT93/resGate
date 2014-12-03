@@ -1,0 +1,9 @@
+       sipush 78
+       sipush 10
+       isub
+       ifeq A
+       sipush 0
+       goto B
+   A:  sipush 1
+   B:
+

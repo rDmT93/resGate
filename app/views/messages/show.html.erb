@@ -36,6 +36,37 @@
 
     </div>
 
+         <% @at = @message.file_attaches %>
+
+         <strong><%= @at.size %> Attachments</strong> <br>
+
+         <% @at.each { |a| %>
+         <% if a.file_content_type.split("/")[1] == "pdf" %>
+            <i class="fa fa-file-pdf-o"></i>
+        <% else %>
+            <% if a.file_content_type.split("/")[0] == "image" %>
+                <i class="fa fa-file-image-o"></i>
+            <% else %>
+                <% if a.file_content_type.split("/")[0] == "audio" %>
+                    <i class="fa fa-file-audio-o"></i>
+                <% else %>
+                    <% if a.file_content_type.split("/")[0] == "video" %>
+                        <i class="fa fa-file-video-o"></i>
+                    <% else%>
+                        <% if a.file_content_type.split("/")[1] == "zip" %>
+                            <i class="fa fa-file-archive-o"></i>
+                        <% end %>
+                     <% end %>
+                <% end %>
+            <% end %>
+
+         <% end %>
+
+         <%= link_to a.file_file_name, a.file.url %> <br>
+
+         <% } %>
+
+    <br>
 
     <%= button_to "Reply", new_message_path(:user_id => @message.sender_id, :r_msg_id => @message.id),
                   :class => "btn btn-success" %>

@@ -11,8 +11,6 @@ class User < ActiveRecord::Base
                                profile: '150x150#'
                            }
 
-
-
   GENDER_TYPES = ["--", "Male", "Female"]
 
   has_many :followers, :dependent => :destroy

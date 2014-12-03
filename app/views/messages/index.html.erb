@@ -35,7 +35,10 @@
             <%= link_to m.subject, message_url(m) %>
           </div>
 
-          <%= m.message[0..100]+"..." %>
+          <%= m.message[0..100]+"..." %> <br>
+
+          <% @at = m.file_attaches %>
+          <strong><%= @at.size %> Attachments</strong>
 
         </div>
     <% } %>

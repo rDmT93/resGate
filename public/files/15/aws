@@ -1,0 +1,6 @@
+export AWS_ACCESS_KEY=AKIAJ3OXQCMZHZU7ZJLA
+export AWS_SECRET_KEY=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
+
+GROUP	sg-3d372758	my-security-group	My security group
+
+ec2-authorize my-security-group -p 22 -s 127.0.0.1/32

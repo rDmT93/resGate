@@ -25,6 +25,14 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
+
+        if params[:files]
+
+          params[:files].each { |f|
+            @message.file_attaches.create(file: f)
+          }
+        end
+
         @u = User.find(@message.user_id)
         format.html { redirect_to user_url(@u), notice: 'Message sent.' }
       else

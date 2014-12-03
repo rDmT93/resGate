@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141128225545) do
+ActiveRecord::Schema.define(version: 20141203162654) do
+
+  create_table "file_attaches", force: true do |t|
+    t.integer  "message_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+  add_index "file_attaches", ["message_id"], name: "index_file_attaches_on_message_id"
 
   create_table "followers", force: true do |t|
     t.integer  "user_id"

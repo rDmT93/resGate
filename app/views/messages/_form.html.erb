@@ -1,4 +1,4 @@
-<%= form_for(@message) do |f| %>
+<%= form_for(@message, :html => { :class => 'form-horizontal', multipart: true }) do |f| %>
     <% if @message.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@message.errors.count, "Error") %> Message not sent:</h2>
@@ -21,9 +21,21 @@
       <% end %>
     </div>
 
+    <br>
+
     <div class="field">
       <label>Message:</label>
       <%= f.text_area :message, :class => "form-control", :rows => "12" %>
+    </div>
+
+    <br>
+
+    <div class="field">
+      <label>File Attaches:</label>
+      <div class="controls">
+
+        <%= file_field_tag "files[]", type: :file, multiple: true %>
+      </div>
     </div>
 
     <%= f.hidden_field :read, :value => false %>
